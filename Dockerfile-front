@@ -15,7 +15,7 @@ FROM nginx
 RUN apt-get update && apt-get install -y curl
 # copying files from previous phase
 COPY --from=builder /app/dist /usr/share/nginx/html
-RUN sleep 3
+RUN sleep 5
 
 # build this image
 # docker image build -f Dockerfile-front -t app-search-cities .
