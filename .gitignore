@@ -15,3 +15,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.editorconfig
+api/package-lock.json
+api/package-lock.json

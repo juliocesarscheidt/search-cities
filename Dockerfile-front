@@ -1,0 +1,31 @@
+# using the "as [name]" means that this will be one phase
+FROM node:alpine as builder
+
+WORKDIR /app
+
+COPY frontend/package.json .
+RUN npm install
+
+COPY ./frontend .
+
+RUN npm run build
+# /app/build will be the directory of files
+
+
+# second phase
+FROM nginx
+
+RUN apt-get update && apt-get install -y curl
+
+# copying files from previous phase
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+CMD ["service", "nginx", "start"]
+
+# build this image
+# docker image build -f Dockerfile-front -t app-search-cities .
+
+# run this image with a container
+# docker container run --name app-search-cities -p 8088:80 app-search-cities
+# docker container run -it --name app-search-cities -p 8088:80 app-search-cities sh
+
