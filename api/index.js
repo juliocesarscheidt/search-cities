@@ -1,5 +1,5 @@
 const express = require('express');
-const port = 9000;
+const port = process.env.API_PORT || 9000;
 const mysql = require('mysql');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -7,7 +7,7 @@ const app = express();
 const router = express.Router();
 
 const connection = mysql.createConnection({
-  host     : 'localhost',
+  host     : process.env.DB_HOST || '127.0.0.1',
   user     : 'root',
   password : 'admin',
   database : 'db_vue_select'

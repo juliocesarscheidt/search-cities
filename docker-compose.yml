@@ -18,7 +18,7 @@ services:
       API_HOST: api:9000
   db:
     container_name: db
-    image: mysql
+    image: mysql:5.7.22
     command: --default-authentication-plugin=mysql_native_password
     ports:
       - 3306:3306
@@ -29,7 +29,8 @@ services:
       MYSQL_ROOT_PASSWORD: admin
       MYSQL_DATABASE: db_vue_select
     volumes:
-      - my-db:/var/lib/mysql
+      - mysql-db:/var/lib/mysql
+      - ./api/data.sql:/docker-entrypoint-initdb.d/data.sql
     # command: "cp docker-entrypoint-initdb.d/"
   api:
     container_name: api
@@ -38,14 +39,18 @@ services:
       dockerfile: Dockerfile-back
     ports:
       - 9000:9000
-    expose:
-      - '9000'
+    # expose:
+    #   - '9000'
     restart: always
     depends_on: 
       - db
     environment:
       DB_HOST: db:3306
-      
+      API_PORT: 9000
+
+volumes:
+  mysql-db:
+
 # docker-compose up -d front
 
 # comando que seria usado para subir o container
