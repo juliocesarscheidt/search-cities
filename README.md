@@ -1,6 +1,24 @@
 # Search Cities
 
-> This project was made with Vue JS in frontend and an API with NodeJS and Express, and its purpose is search cities according to the state selected
+> This project was made with Vue JS in frontend and an API with NodeJS and Express, and its purpose is search cities according to the state selected. It can be runned with docker
+
+## Running with Docker
+
+``` bash
+# it'll just start all services
+docker-compose up
+
+# it'll start all services and detach
+docker-compose up -d
+
+# it'll build and start all services
+docker-compose up --build
+
+# it'll build and start all services and then detach
+docker-compose up -d --build
+```
+
+## Running apart
 
 ## API
 
@@ -18,7 +36,7 @@ npm start
 npm run dev
 ```
 
-## Frontend Build
+## Frontend
 
 ``` bash
 # install dependencies
@@ -39,7 +57,7 @@ npm test
 
 ## Versioning
 
-V1.0.0 [See Tags](https://github.com/julio-cesar-development/Calendary-VBA/tags).
+V1.1.0 [See Tags](https://github.com/julio-cesar-development/search-cities/tags).
 
 ## Authors
 
