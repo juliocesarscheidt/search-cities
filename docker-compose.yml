@@ -7,23 +7,16 @@ services:
       dockerfile: Dockerfile-front
     ports:
       - 8090:80
-    # expose:
-    #   - '8090'
     restart: always
-    # volumes:
-    #   # bookmarking /app/node_modules (ignoring)
-    #   - ./frontend/node_modules
-    #   - ./frontend:/app
     environment:
       API_HOST: api:9000
   db:
     container_name: db
     image: mysql:5.7.22
     command: --default-authentication-plugin=mysql_native_password
+    # mysql -u root -padmin db_vue_select < docker-entrypoint-initdb.d/data.sql
     ports:
       - 3306:3306
-    # expose:
-    #   - '3306'
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: admin
@@ -31,7 +24,6 @@ services:
     volumes:
       - mysql-db:/var/lib/mysql
       - ./api/data.sql:/docker-entrypoint-initdb.d/data.sql
-    command: "mysql -u root -padmin db_vue_select < docker-entrypoint-initdb.d/data.sql"
   api:
     container_name: api
     build:
@@ -39,8 +31,6 @@ services:
       dockerfile: Dockerfile-back
     ports:
       - 9000:9000
-    # expose:
-    #   - '9000'
     restart: always
     depends_on: 
       - db
@@ -51,7 +41,4 @@ services:
 volumes:
   mysql-db:
 
-# docker-compose up -d front
-
-# comando que seria usado para subir o container
-# docker container run --name app-search-cities -p 8090:80 app-search-cities
+# docker-compose up -d
