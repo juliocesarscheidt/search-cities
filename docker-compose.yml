@@ -1,0 +1,15 @@
+version: '3'
+services:
+  front:
+    container_name: front
+    build:
+      context: .
+      dockerfile: Dockerfile-front
+    ports:
+      - 8090:80
+    # volumes:
+
+# docker-compose up -d front
+
+# comando que seria usado para subir o container
+# docker container run --name app-search-cities -p 8090:80 app-search-cities

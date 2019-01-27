@@ -21,8 +21,8 @@ RUN sleep 3
 # docker image build -f Dockerfile-front -t app-search-cities .
 
 # run this image with a container
-# docker container run --name app-search-cities -p 8088:80 app-search-cities
-# docker container run -it --name app-search-cities -p 8088:80 app-search-cities bash
+# docker container run --name app-search-cities -p 8090:80 app-search-cities
+# docker container run -it --name app-search-cities -p 8090:80 app-search-cities bash
 
 # service nginx status
 # service nginx start
