@@ -2,12 +2,9 @@
 FROM node:alpine as builder
 
 WORKDIR /app
-
 COPY frontend/package.json .
 RUN npm install
-
 COPY ./frontend .
-
 RUN npm run build
 # /app/build will be the directory of files
 
@@ -16,15 +13,9 @@ RUN npm run build
 FROM nginx
 
 RUN apt-get update && apt-get install -y curl
-
 # copying files from previous phase
 COPY --from=builder /app/dist /usr/share/nginx/html
-
 RUN sleep 3
-
-RUN service nginx status
-
-CMD ["service", "nginx", "start"]
 
 # build this image
 # docker image build -f Dockerfile-front -t app-search-cities .
@@ -37,8 +28,3 @@ CMD ["service", "nginx", "start"]
 # service nginx start
 
 # ls -lt /usr/share/nginx/html
-
-
-
-
-
