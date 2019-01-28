@@ -11,24 +11,34 @@ export default {
 </script>
 
 <style>
+body {
+  overflow: hidden;
+}
 #app {
+  height: 100vw;
+  padding: 0px;
+  margin: 0px;
   font-family: 'calibri', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #000;
-  margin-top: 50px;
+}
+.wrapper {
+  height: 100vw;
 }
 select {
   width: 200px !important;
 }
-
+.black {
+  background-color: #000 !important;
+  color: #fff !important;
+}
 hr {
   height: 2px;
   background-color: #ddd;
   width: 80%;
 }
-
 .multiselect {
   border: 1px solid #ccc !important;
   border-radius: 4px !important;
