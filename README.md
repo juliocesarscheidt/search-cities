@@ -29,11 +29,16 @@ mysql -u [user] -p[password] -e "create schema \`db_vue_select\`";
 # populating db
 mysql -u [user] -p[password] db_vue_select < data.sql
 
-# serve in production mode
-npm start
+# install dependencies
+npm install
 
-# serve in development mode
+# run API in development mode
+npm start
+# or
 npm run dev
+
+# run API in production mode
+npm run prod
 ```
 
 ## Frontend
@@ -43,6 +48,8 @@ npm run dev
 npm install
 
 # serve in development mode
+npm start
+# or
 npm run dev
 
 # build for production
