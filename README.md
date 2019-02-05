@@ -1,8 +1,10 @@
 # Search Cities
 
-> This project was made with Vue JS in frontend and an API with NodeJS and Express, and its purpose is search cities according to the state selected. It can be runned with docker
+[![Netlify Status](https://api.netlify.com/api/v1/badges/24993dd7-3c1c-44bd-9a4c-63f0621524cb/deploy-status)](https://app.netlify.com/sites/search-cities-js/deploys)
 
-See project [Search Cities](https://friendly-goldstine-55a780.netlify.com/#/)
+> This project was made with Vue JS in frontend and an API with NodeJS and Express, and its purpose is search cities according to the selected state. It can be executed with docker
+
+See project [Search Cities](https://search-cities-js.netlify.com)
 
 ## Running with Docker
 
@@ -26,7 +28,7 @@ docker-compose up -d --build
 
 ``` bash
 # creating db
-mysql -u [user] -p[password] -e "create schema \`db_vue_select\`";
+mysql -u [user] -p[password] -e "create schema db_vue_select"
 
 # populating db
 mysql -u [user] -p[password] db_vue_select < data.sql

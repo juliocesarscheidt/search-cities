@@ -48,7 +48,7 @@ export default {
         }
       });
     if (this.getFromStorage('user_color_applied')) {
-      this.applyClass = this.getFromStorage('user_color_applied') ? true : false;
+      this.applyClass = this.getFromStorage('user_color_applied');
     } else {
       this.setStorage('user_color_applied', this.applyClass);
     }
