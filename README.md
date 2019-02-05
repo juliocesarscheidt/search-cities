@@ -2,6 +2,8 @@
 
 > This project was made with Vue JS in frontend and an API with NodeJS and Express, and its purpose is search cities according to the state selected. It can be runned with docker
 
+See project [Search Cities](https://friendly-goldstine-55a780.netlify.com/#/)
+
 ## Running with Docker
 
 ``` bash
