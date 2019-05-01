@@ -1,5 +1,6 @@
 # Search Cities
 
+[![Build Status](https://travis-ci.org/julio-cesar-development/search-cities.svg?branch=master)](https://travis-ci.org/julio-cesar-development/search-cities)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/24993dd7-3c1c-44bd-9a4c-63f0621524cb/deploy-status)](https://app.netlify.com/sites/search-cities-js/deploys)
 
 > This project was made with Vue JS in frontend and an API with NodeJS and Express, and its purpose is search cities according to the selected state. It can be executed with docker

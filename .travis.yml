@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker image build -t juliocesarmidia/search-cities-front -f Dockerfile-front .
+  - docker image build -t juliocesarmidia/search-cities-front -f Dockerfile-front-dev .
 
 script:
-  - docker container run juliocesarmidia/search-cities-front --name search-cities-front -p 8090:80
+  - docker container run --name search-cities-front -p 8090:80 juliocesarmidia/search-cities-front npm run lint
