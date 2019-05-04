@@ -8,7 +8,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// bringing routes passing the express instance
+// Bringing routes passing the instance of express
 require('./routes/index')(app);
 
 app.listen(port, () => {

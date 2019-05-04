@@ -31,7 +31,7 @@ export default {
       states: [],
       selectedState: 0,
       selectedCity: 0,
-      applyClass: false,
+      applyClass: false
     };
   },
   mounted () {
@@ -61,7 +61,7 @@ export default {
       if (localStorage.getItem(propStorage)) {
         let _selected = JSON.parse(localStorage.getItem(propStorage)).value;
         return _selected || 0;
-      };
+      }
     },
     setColor () {
       this.applyClass = !this.applyClass;
@@ -90,7 +90,7 @@ export default {
         this.setStorage('user_cities', this.selectedCity);
       }
     }
-  },
+  }
 };
 </script>
 
