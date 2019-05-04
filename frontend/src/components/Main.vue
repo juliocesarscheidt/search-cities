@@ -31,7 +31,7 @@ export default {
       states: [],
       selectedState: 0,
       selectedCity: 0,
-      applyClass: false
+      applyClass: false,
     };
   },
   mounted () {
@@ -90,7 +90,7 @@ export default {
         this.setStorage('user_cities', this.selectedCity);
       }
     }
-  }
+  },
 };
 </script>
 

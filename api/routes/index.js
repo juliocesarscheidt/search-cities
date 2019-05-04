@@ -6,7 +6,7 @@ router.get('/states', (req, res) => {
   connection.query('select * from `states`;', function (err, response) {
     if (err) {
       return res.status(500).json({'error': 'An error has occurred'});
-    };
+    }
     res.status(200).json({ 'states': response })
   });
 })
@@ -30,7 +30,7 @@ router.get('/cities', (req, res) => {
   connection.query(sql, [state], function (err, response) {
     if (err) {
       return res.status(500).json({'error': 'An error has occurred'});
-    };
+    }
     return res.status(200).json({'cities': response});
   });
 });

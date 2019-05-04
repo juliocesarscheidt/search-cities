@@ -16,14 +16,9 @@ RUN apt-get update && apt-get install -y curl
 COPY --from=builder /app/dist /usr/share/nginx/html
 RUN sleep 5
 
-# build this image
+# Build this image
 # docker image build -f Dockerfile-front -t app-search-cities .
 
-# run this image with a container
+# Run this image
 # docker container run --name app-search-cities -p 8090:80 app-search-cities
 # docker container run -it --name app-search-cities -p 8090:80 app-search-cities bash
-
-# service nginx status
-# service nginx start
-
-# ls -lt /usr/share/nginx/html

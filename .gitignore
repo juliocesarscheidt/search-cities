@@ -18,3 +18,4 @@ yarn-error.log*
 api/package-lock.json
 api/package-lock.json
 api/index-https.js
+.scannerwork

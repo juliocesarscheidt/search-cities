@@ -9,17 +9,17 @@ See project [Search Cities](https://search-cities-js.netlify.com)
 
 ## Running with Docker
 
-``` bash
+```bash
 # it'll just start all services
 docker-compose up
 
-# it'll start all services and detach
+# it'll start all services in daemon mode
 docker-compose up -d
 
 # it'll build and start all services
 docker-compose up --build
 
-# it'll build and start all services and then detach
+# it'll build and start all services in daemon mode
 docker-compose up -d --build
 ```
 
