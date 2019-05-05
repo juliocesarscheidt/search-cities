@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const urlBase = process.env.API_HOST || `//blackdevs.com.br:9000`;
-// const urlBase = process.env.API_HOST || `//${window.location.hostname}:9000`;
+const urlBase = process.env.API_HOST || `https://blackdevs.com.br:9000`;
 
 const getStates = () => {
   return axios.get(`${urlBase}/api/v1/states`);
