@@ -13,6 +13,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@sentry/browser": "^5.2.1",
+    "@sentry/integrations": "^5.2.0",
     "axios": "^0.18.0",
     "vue": "^2.5.2",
     "vue-multiselect": "^2.1.3",
