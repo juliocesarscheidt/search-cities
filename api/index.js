@@ -1,15 +1,12 @@
 const express = require('express');
 const port = process.env.API_PORT || 9000;
-const cors = require('cors');
-const bodyParser = require('body-parser');
+
 const app = express();
+const registerMiddlewares = require('./utils/registerMiddlewares.js');
+const registerRoutes = require('./utils/registerRoutes.js');
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// Bringing routes passing the instance of express
-require('./routes/index')(app);
+registerMiddlewares(app);
+registerRoutes(app);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

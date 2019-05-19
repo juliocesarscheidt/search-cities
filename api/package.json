@@ -12,6 +12,7 @@
     "redis": "2.8.0"
   },
   "devDependencies": {
+    "knoblr": "^2.4.0",
     "nodemon": "^1.18.9"
   },
   "scripts": {

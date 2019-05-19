@@ -20,6 +20,7 @@
 
 <script>
 import { getStates, getCities } from '@/services/getData.js';
+import * as Sentry from '@sentry/browser';
 
 export default {
   name: 'Main',
@@ -46,6 +47,9 @@ export default {
           this.getCities(this.selectedState);
           this.selectedCity = this.getFromStorage('user_cities');
         }
+      }).catch(err => {
+        // dispatching errors to Sentry
+        Sentry.captureException(err);
       });
     if (this.getFromStorage('user_color_applied')) {
       this.applyClass = this.getFromStorage('user_color_applied');
@@ -73,6 +77,9 @@ export default {
           let cities = res.data.cities;
           cities.unshift({ 'id': 0, 'name': '-- Selecione --' });
           this.cities = cities;
+        }).catch(err => {
+          // dispatching errors to Sentry
+          Sentry.captureException(err);
         });
     },
     onChangeState (e) {

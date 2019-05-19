@@ -9,12 +9,9 @@ RUN sleep 5
 
 CMD ["npm", "run", "dev"]
 
-
 # build this image
 # docker image build -f Dockerfile-back -t app-search-cities-back .
 
 # run this image with a container
 # docker container run --name app-search-cities-back -p 9000:9000 app-search-cities-back
 # docker container run -it --name app-search-cities-back -p 9000:9000 app-search-cities-back bash
-
-# ls -lt /app
