@@ -4,8 +4,6 @@ const router = express.Router();
 const logger = require('knoblr');
 
 router.get('/status', (req, res) => {
-  logger.info('Solicitação de status da API recebida');
-
   connection.ping(function (err) {
     if (err) {
       logger.info('Server unavailable');

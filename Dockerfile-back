@@ -5,7 +5,7 @@ COPY api/package.json .
 RUN npm install
 COPY ./api .
 
-RUN sleep 5
+RUN sleep 15
 
 CMD ["npm", "run", "dev"]
 
