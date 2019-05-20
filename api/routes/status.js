@@ -9,8 +9,8 @@ router.get('/status', (req, res) => {
       logger.info('Server unavailable');
       return res.status(500).json({'status': 'Server unavailable'});
     }
-    logger.info('Up and Running');
-    return res.status(200).json({'status': 'Up and Running'});
+    logger.info('Server running');
+    return res.status(200).json({'status': 'Server running'});
   })
 });
 

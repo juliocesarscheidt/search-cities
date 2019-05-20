@@ -31,7 +31,7 @@ docker-compose up -d --build
 
 ``` bash
 # creating db
-mysql -u [user] -p[password] -e "create schema db_vue_select"
+mysql -u [user] -p[password] -e "CREATE SCHEMA IF NOT EXISTS db_vue_select"
 
 # populating db
 mysql -u [user] -p[password] db_vue_select < data.sql

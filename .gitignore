@@ -15,7 +15,8 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.editorconfig
-api/package-lock.json
-api/package-lock.json
+package-lock.json
 api/index-https.js
 .scannerwork
+coverage
+.nyc_output
