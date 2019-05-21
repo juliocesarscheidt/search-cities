@@ -10,7 +10,8 @@ router.get('/status', (req, res) => {
       return res.status(500).json({'status': 'Server unavailable'});
     }
     logger.info('Server running');
-    return res.status(200).json({'status': 'Server running'});
+    const uptime = process.uptime();
+    return res.status(200).json({'status': 'Server running', 'uptime': uptime});
   })
 });
 
