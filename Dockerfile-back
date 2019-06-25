@@ -1,13 +1,38 @@
-FROM node:alpine
+FROM ubuntu:18.04
+LABEL maintainer="Julio Cesar <julio@blackdevs.com.br>"
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+ENV TZ=America/Sao_Paulo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN apt-get update -qq && \
+    apt-get install -y -qq \
+    tzdata \
+    apt-transport-https \
+    ca-certificates \
+    curl apt-utils git wget zip \
+    gnupg-agent \
+    software-properties-common \
+    inetutils-ping
+
+RUN curl -sL https://deb.nodesource.com/setup_9.x | apt-get install -y -qq nodejs \
+  && apt-get install -y -qq npm \
+  && apt-get update -qq
 
 WORKDIR /app
 COPY api/package.json .
 RUN npm install
 COPY ./api .
 
-RUN sleep 15
+RUN export SHA="$(git rev-parse HEAD)"
+ENV SHA $SHA
 
-CMD ["npm", "run", "dev"]
+RUN chmod +x /app/run.sh
+
+ENTRYPOINT ["/bin/bash", "-x", "/app/run.sh"]
+
+# CMD ["npm", "run", "dev"]
 
 # build this image
 # docker image build -f Dockerfile-back -t app-search-cities-back .

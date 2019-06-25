@@ -1,4 +1,5 @@
 FROM node:alpine
+LABEL maintainer="Julio Cesar <julio@blackdevs.com.br>"
 
 WORKDIR /app
 COPY frontend/package.json .

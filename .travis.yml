@@ -2,6 +2,9 @@ sudo: required
 services:
   - docker
 
+env:
+  - SHA=$(git rev-parse HEAD)
+
 before_install:
   - docker image build -t juliocesarmidia/search-cities-front -f Dockerfile-front-dev .
 

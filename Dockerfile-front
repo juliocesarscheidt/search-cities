@@ -1,4 +1,5 @@
 FROM node:alpine as builder
+LABEL maintainer="Julio Cesar <julio@blackdevs.com.br>"
 
 WORKDIR /app
 COPY frontend/package.json .
@@ -9,7 +10,7 @@ RUN npm run build
 
 FROM nginx
 
-RUN apt-get update && apt-get install -y curl
+RUN apt-get update && apt-get install -y curl git
 
 COPY --from=builder /app/dist /usr/share/nginx/html
 RUN sleep 5

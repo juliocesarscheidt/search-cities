@@ -4,7 +4,7 @@ services:
     container_name: front
     build:
       context: .
-      dockerfile: Dockerfile-front
+      dockerfile: Dockerfile-front-dev
     ports:
       - 8090:80
     restart: always
@@ -18,8 +18,8 @@ services:
       - 3306:3306
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: db_vue_select
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
     volumes:
       - mysql-db:/var/lib/mysql
       - ./api/data.sql:/docker-entrypoint-initdb.d/data.sql
@@ -34,11 +34,12 @@ services:
     depends_on:
       - db
     environment:
-      DB_HOST: db
-      DB_USER: root
-      DB_PASS: admin
-      DB_DATABASE: db_vue_select
-      API_PORT: 9000
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_DATABASE: ${DB_DATABASE}
+      API_PORT: ${API_PORT}
+      SHA: ${SHA}
 
 volumes:
   mysql-db:

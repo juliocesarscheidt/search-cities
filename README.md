@@ -1,6 +1,7 @@
 # Search Cities
 
 [![Build Status](https://badgen.net/travis/julio-cesar-development/search-cities?icon=travis)](https://travis-ci.org/julio-cesar-development/search-cities)
+[![CircleCI](https://circleci.com/gh/julio-cesar-development/search-cities/tree/master.svg?style=svg)](https://circleci.com/gh/julio-cesar-development/search-cities/tree/master)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=julio-cesar-development_search-cities&metric=alert_status)](https://sonarcloud.io/dashboard?id=julio-cesar-development_search-cities)
 [![GitHub Status](https://badgen.net/github/status/julio-cesar-development/search-cities)](https://github.com/julio-cesar-development/search-cities)
 <!-- [![Netlify Status](https://api.netlify.com/api/v1/badges/24993dd7-3c1c-44bd-9a4c-63f0621524cb/deploy-status)](https://app.netlify.com/sites/search-cities-js/deploys) -->

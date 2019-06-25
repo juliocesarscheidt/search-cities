@@ -15,4 +15,9 @@ router.get('/status', (req, res) => {
   })
 });
 
+router.get('/version', (req, res) => {
+  const version = process.env.SHA || 'dev';
+  return res.status(200).json({version});
+});
+
 module.exports = app => app.use('/api/v1', router);
