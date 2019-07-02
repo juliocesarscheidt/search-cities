@@ -6,7 +6,7 @@ env:
   - SHA=$(git rev-parse HEAD)
 
 before_install:
-  - docker image build -t juliocesarmidia/search-cities-front -f Dockerfile-front-dev .
+  - docker image build -t juliocesarmidia/search-cities-front:$SHA -f Dockerfile-front-dev .
 
 script:
-  - docker container run --name search-cities-front -p 8090:80 juliocesarmidia/search-cities-front npm run lint
+  - docker container run --name search-cities-front -p 8090:80 juliocesarmidia/search-cities-front:$SHA npm run lint
