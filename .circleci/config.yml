@@ -11,9 +11,9 @@ jobs:
           name: Install Docker client
           command: |
             set -x
-            VER="18.06.0-ce"
-            curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
-            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+            DOCKER_VERSION="18.06.0-ce"
+            curl -L -o /tmp/docker-$DOCKER_VERSION.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_VERSION.tgz
+            tar -xz -C /tmp -f /tmp/docker-$DOCKER_VERSION.tgz
             mv /tmp/docker/* /usr/bin
 
       - setup_remote_docker:
@@ -23,6 +23,15 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            SHA=$(git rev-parse HEAD)
-            docker image build -t juliocesarmidia/search-cities-front:$SHA -f Dockerfile-front-dev .
-            docker container run --name search-cities-front -p 8090:80 juliocesarmidia/search-cities-front:$SHA npm run lint
+            SHA=$(git rev-parse --short=7 HEAD)
+
+            docker image build \
+              -f ./client/development.Dockerfile \
+              -t juliocesarmidia/search-cities-client:latest \
+              -t juliocesarmidia/search-cities-client:$SHA \
+              ./client
+
+            docker container run --rm \
+              --name search-cities-client \
+              juliocesarmidia/search-cities-client:latest \
+              npm run lint

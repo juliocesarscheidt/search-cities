@@ -1,45 +1,58 @@
-version: '3'
+version: '3.4'
+
 services:
-  front:
-    container_name: front
+  client:
+    container_name: client
     build:
-      context: .
-      dockerfile: Dockerfile-front
+      context: ./client/
+      dockerfile: development.Dockerfile
     ports:
-      - 8090:80
-    restart: always
-    environment:
-      API_HOST: api:9000
-  db:
-    container_name: db
-    image: mysql:5.7.22
-    command: --default-authentication-plugin=mysql_native_password
-    ports:
-      - 3306:3306
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      - 8080:80
+    restart: on-failure
     volumes:
-      - mysql-db:/var/lib/mysql
-      - ./api/data.sql:/docker-entrypoint-initdb.d/data.sql
-  api:
-    container_name: api
+      - ./client:/app:rw
+      - client-node-modules:/app/node_modules:rw
+
+  server:
+    container_name: server
+    command: "sh -c 'npm install && npm run dev'"
     build:
-      context: .
-      dockerfile: Dockerfile-back
+      context: ./server/
+      dockerfile: Dockerfile
     ports:
       - 9000:9000
-    restart: always
-    depends_on:
-      - db
+    restart: on-failure
     environment:
-      DB_HOST: ${DB_HOST}
-      DB_USER: ${DB_USER}
-      DB_PASS: ${DB_PASS}
-      DB_DATABASE: ${DB_DATABASE}
-      API_PORT: ${API_PORT}
-      SHA: ${SHA}
+      MYSQL_HOST: ${MYSQL_HOST:-mysql}
+      MYSQL_PORT: ${MYSQL_PORT:-3306}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASS: ${MYSQL_PASS}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      API_PORT: ${API_PORT:-9000}
+      VERSION: ${VERSION}
+    volumes:
+      - ./server:/app:rw
+      - server-node-modules:/app/node_modules:rw
+
+  mysql:
+    container_name: mysql
+    image: mysql:8.0
+    command: [
+      "--default-authentication-plugin=mysql_native_password",
+      "--character-set-server=utf8mb4",
+      "--collation-server=utf8mb4_unicode_ci"
+    ]
+    ports:
+      - 3806:3306
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASS}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - mysql-volume:/var/lib/mysql:rw
+      - ./data.sql:/docker-entrypoint-initdb.d/data.sql:rw
 
 volumes:
-  mysql-db:
+  client-node-modules:
+  mysql-volume:
+  server-node-modules:

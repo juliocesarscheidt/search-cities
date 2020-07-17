@@ -1,4 +1,4 @@
-use `db_vue_select`;
+use `vue_project`;
 
 SET NAMES utf8mb4 ;
 

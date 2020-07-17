@@ -1,0 +1,28 @@
+{
+  "name": "search-cities-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "1.18.3",
+    "cors": "2.8.5",
+    "express": "4.16.4",
+    "mysql": "2.16.0",
+    "pm2": "3.2.9",
+    "redis": "2.8.0"
+  },
+  "devDependencies": {
+    "knoblr": "2.4.0",
+    "nodemon": "1.18.9"
+  },
+  "scripts": {
+    "nodemon": "nodemon",
+    "dev": "nodemon index.js",
+    "pm2": "pm2",
+    "prod": "pm2 start index.js -x --name search-cities-server",
+    "start": "pm2 start index.js -x --name search-cities-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -53,7 +53,7 @@ router.get('/cities', (req, res) => {
   // validation will return the state
   const state = validation.state;
   const sql = handleSql(state);
-  
+
   connection.query(sql, [state], function (err, response) {
     if (err) {
       return res.status(500).json({'error': 'An error has occurred'});

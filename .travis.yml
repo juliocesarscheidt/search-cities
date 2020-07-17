@@ -1,12 +1,32 @@
-sudo: required
+language: shell # minimal
+
+os:
+  - linux
+
+dist: bionic
+
+branches:
+  only:
+    - master
+    - development
+
 services:
   - docker
 
 env:
-  - SHA=$(git rev-parse HEAD)
+  - SHA=$(git rev-parse --short=7 HEAD)
 
 before_install:
-  - docker image build -t juliocesarmidia/search-cities-front:$SHA -f Dockerfile-front-dev .
+  - |
+    docker image build \
+      -f ./client/development.Dockerfile \
+      -t juliocesarmidia/search-cities-client:latest \
+      -t juliocesarmidia/search-cities-client:$SHA \
+      ./client
 
 script:
-  - docker container run --name search-cities-front -p 8090:80 juliocesarmidia/search-cities-front:$SHA npm run lint
+  - |
+    docker container run --rm \
+      --name search-cities-client \
+      juliocesarmidia/search-cities-client:latest \
+      npm run lint

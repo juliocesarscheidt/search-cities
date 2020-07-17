@@ -1,30 +1,28 @@
 'use strict'
-// Template version: 1.3.1
 
 const path = require('path')
 
 module.exports = {
   dev: {
-
-    // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
 
-    // Various Dev Server settings
-    host: '0.0.0.0', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    proxyTable: {
+      '/api/v1': {
+        target: 'http://server:9000',
+      }
+    },
+
+    host: process.env.HOST || '0.0.0.0',
+    port: process.env.PORT || 80,
+
     autoOpenBrowser: false,
-    errorOverlay: true,
+    errorOverlay: false,
     notifyOnErrors: true,
-    poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
+    poll: false,
 
     useEslint: true,
     showEslintErrorsInOverlay: false,
-
-    /**
-     * Source Maps
-     */
 
     devtool: 'cheap-module-eval-source-map',
     cacheBusting: true,
@@ -32,16 +30,14 @@ module.exports = {
   },
 
   build: {
-    // Template for index.html
     index: path.resolve(__dirname, '../dist/index.html'),
 
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
 
-    /**
-     * Source Maps
-     */
+    host: process.env.HOST || '0.0.0.0',
+    port: process.env.PORT || 80,
 
     productionSourceMap: true,
     devtool: '#source-map',
