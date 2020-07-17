@@ -5,11 +5,6 @@ os:
 
 dist: bionic
 
-branches:
-  only:
-    - master
-    - development
-
 services:
   - docker
 
